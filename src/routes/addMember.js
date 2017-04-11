@@ -2,21 +2,19 @@ const query = require('../queries/query.js');
 const Joi = require('joi');
 
 const handler = (request, reply) => {
-
-  query.addMember(request.payload, (err, res) => {
+  query.addMember(request.payload, (err) => {
     if (err) {
       console.log(err);
-      return;
     }
-  })
+  });
 
   reply.redirect('/');
-}
+};
 
 const options = {
   method: 'POST',
   path: '/add-member',
-  handler: handler,
+  handler,
   config: {
     validate: {
       payload: {
@@ -24,7 +22,7 @@ const options = {
         position: Joi.string().required(),
         location: Joi.string().required(),
         description: Joi.string().required(),
-        languages: Joi.string().required(),
+        languages: Joi.string().required()
       }
     }
   }
