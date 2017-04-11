@@ -12,21 +12,6 @@ touch config.env &&
 echo 'Add database URL to config.env'
 ```
 
-## TO DO list
-
-- CSS a list
-- search bar functionality
-  - in our query file, make a function which can take a search input and search the database for it.
-  - Have a route handler for the search route (/search?)
-- Add members functionality
-
-- vote for members functionality
-
-- Add data validation?
-
-- Mavis' Song.
-
-
 ## User Stories
 
 As a visitor to the site
@@ -66,20 +51,3 @@ As a potential employer
 |       id       |    PRIMARY KEY SERIAL NOT NULL      |
 |    member_id   | references members(id) INT NOT NULL |
 |    num_votes   |              INT                    |
-
-## HOW
-
-- All server side rendering (i.e. using Hapi and Handlebars)
-
-- Like in week 6, have database folder which builds and connects to a database.
-
-- Build a HAPI server, which can use views to serve up templates, filled out with Handlebars and uses Inert to serve static files.
-
-- Have form partials, which action gives different routes and different methods:
-  - search form, with endpoint '/search'
-  - add form, '/addmember'
-  - vote form, '/addvote'
-
-- Default layout will show the search form, other forms will be added with different views depending on design choices.
-
-- Different routes will deal with different endpoints, with the handler making connections to and querying the database, will pass the information recieved from the database in the ``` reply.view('[view name here]', [data here]) ```
