@@ -9,7 +9,8 @@
     "test": "node src/tests/test.js",
     "coverage": "istanbul cover ./src/tests/test.js",
     "prepush": "npm run lint",
-    "lint": "./node_modules/.bin/eslint --ignore-pattern './public/**/*.js' './+(src)/**/*.js'"
+    "lint": "./node_modules/.bin/eslint --ignore-pattern './public/**/*.js' './+(src)/**/*.js'",
+    "init-project": "bash scripts/init.sh"
   },
   "repository": {
     "type": "git",
