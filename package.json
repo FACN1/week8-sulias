@@ -7,7 +7,9 @@
     "start": "node src/start_server.js",
     "dev": "nodemon src/start_server.js",
     "test": "node src/tests/test.js",
-    "coverage": "istanbul cover ./src/tests/test.js"
+    "coverage": "istanbul cover ./src/tests/test.js",
+    "prepush": "npm run lint",
+    "lint": "./node_modules/.bin/eslint --ignore-pattern './public/**/*.js' './+(src)/**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -20,17 +22,22 @@
   },
   "homepage": "https://github.com/FACN1/week7-ifitmake-suHapi#readme",
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "husky": "^0.13.3",
     "istanbul": "^0.4.5",
-    "nodemon": "^1.11.0",
-    "tape": "^4.6.3"
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
     "env2": "^2.1.1",
     "handlebars": "^4.0.6",
     "hapi": "^16.1.1",
     "inert": "^4.2.0",
+    "joi": "^10.4.1",
     "pg": "^6.1.5",
-    "vision": "^4.1.1"
+    "vision": "^4.1.1",
+    "tape": "^4.6.3"
   },
   "engines": {
     "node": "7.4.0"
