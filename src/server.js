@@ -1,21 +1,21 @@
 const hapi = require('hapi');
 const vision = require('vision');
-const path = require('path');
 const routes = require('./routes/index.js');
 const inert = require('inert');
+const handlebars = require('handlebars');
 
-const server = new hapi.Server()
+const server = new hapi.Server();
 
 server.connection({
   port: process.env.PORT || 4000
-})
+});
 
 server.register([inert, vision], (error) => {
-  if(error) throw error;
+  if (error) throw error;
 
   server.views({
     engines: {
-      hbs:require('handlebars')
+      hbs: handlebars
     },
     relativeTo: __dirname,
     path: 'views',
@@ -23,8 +23,8 @@ server.register([inert, vision], (error) => {
     partialsPath: 'views/partials',
     layoutPath: 'views/layout',
     layout: 'default'
-  })
+  });
   server.route(routes);
-})
+});
 
 module.exports = server;

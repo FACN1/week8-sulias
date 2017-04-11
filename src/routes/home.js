@@ -1,25 +1,24 @@
 const query = require('../queries/query.js');
 
-const handler = (request, reply) =>{
-
-  query.getAll((err,res) => {
-    if(err) {
+const handler = (request, reply) => {
+  query.getAll((err, res) => {
+    if (err) {
       console.log(err);
       return reply.code(500);
     }
-    let data = {
+    const data = {
       title: 'FACN Hapi Members',
       description: 'An app which shows people involved in FACN1, where a user can see everyone involved, and add new people',
       members: res.rows
-    }
-    reply.view('index', data);
-  })
+    };
+    return reply.view('index', data);
+  });
 };
 
 const options = {
   method: 'GET',
   path: '/',
-  handler: handler
+  handler
 };
 
 module.exports = options;

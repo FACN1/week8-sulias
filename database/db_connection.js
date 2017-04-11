@@ -1,4 +1,4 @@
-const {Pool} = require('pg');
+const { Pool } = require('pg');
 const url = require('url');
 require('env2')('./config.env');
 
@@ -13,8 +13,8 @@ const options = {
   database: params.pathname.split('/')[1],
   max: process.env.DB_MAX_CONNECTIONS || 2,
   user: username,
-  password: password
-}
+  password
+};
 
 options.ssl = (options.host !== 'localhost');
 
