@@ -5,7 +5,7 @@ const handler = (request, reply) =>{
   query.getAll((err,res) => {
     if(err) {
       console.log(err);
-      return reply.code(500);
+      return reply('Internal server error').code(500);
     }
     let data = {
       title: 'FACN Hapi Members',
