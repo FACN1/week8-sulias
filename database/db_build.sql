@@ -12,7 +12,7 @@ CREATE TABLE members (
 );
 
 CREATE TABLE github_users (
-  id SERIAL PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
   name VARCHAR(255),
   avatar_url VARCHAR(255),
