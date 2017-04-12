@@ -10,7 +10,9 @@ const handler = (request, reply) => {
       const data = {
         title: 'FACN Hapi Members',
         description: 'An app which shows people involved in FACN1, where a user can see everyone involved, and add new people',
-        members: res.rows
+        members: res.rows,
+        username: request.auth.user.username,
+        avatar_url: request.auth.user.img_url
       };
       return reply.view('index', data);
     });
