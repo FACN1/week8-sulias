@@ -1,7 +1,7 @@
 # week7-ifitmake-suHapi
 An app which shows people involved in FACN1, where a user can see everyone involved, and add new people
 
-[SEE IT ON HEROKU HERE](https://secret-gorge-99094.herokuapp.com/)
+[SEE IT ON HEROKU HERE](#)
 
 ## Get Started
 ```bash
@@ -39,10 +39,12 @@ As a potential employer
 | :------------- | :------------------  |
 |       id       |  PRIMARY KEY SERIAL  |
 |      name      | VARCHAR(255) NOT NULL|
+|    username    | VARCHAR(255) NOT NULL|
 |    position    | VARCHAR(100) NOT NULL|
-|      location  |     VARCHAR(100)     |
+|    location    |     VARCHAR(100)     |
 |   description  |         TEXT         |
 |    languages   |         TEXT         |
+|  access_token  |     VARCHAR(255)     |
 
 **Votes**
 
@@ -51,3 +53,35 @@ As a potential employer
 |       id       |    PRIMARY KEY SERIAL NOT NULL      |
 |    member_id   | references members(id) INT NOT NULL |
 |    num_votes   |              INT                    |
+
+
+<!-- New table -->
+**Blog Posts**
+| ***Columns***  |           ***Parameters***          |
+| :------------- |           :-------------            |
+|       id       |    PRIMARY KEY SERIAL NOT NULL      |
+|    author_id   | references members(id) INT NOT NULL |
+|      post      |                 TEXT                |
+|      date      |                 INT                 |
+
+**github_users**
+
+| ***Columns***  | ***Parameters  ***   |
+| :------------- | :------------------  |
+|       id       |  PRIMARY KEY SERIAL  |
+|    username    | VARCHAR(255) NOT NULL|
+|      name      | VARCHAR(255) NOT NULL|
+|   avatar_url   | VARCHAR(100) NOT NULL|
+|    location    |     VARCHAR(100)     |
+|  access_token  |     VARCHAR(255)     |
+
+
+## Schedule / TODO
+##### Project Day 1
+- Add a new database table to db_build.js
+- Add a login button to homepage
+- Add GitHub OAuth 2 for login
+
+##### Project Day 2
+- Add login button to index
+-
