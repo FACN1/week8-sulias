@@ -10,7 +10,9 @@
 </head>
   <body>
     {{> header}}
-    {{> searchform}}
+    {{#if username}}
+      {{> searchform}}
+    {{/if}}
 
     {{{content}}}
     <audio controls autoplay="true" class="song">
