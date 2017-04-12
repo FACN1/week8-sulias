@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS members, votes cascade;
+DROP TABLE IF EXISTS members, votes, blog, github_users cascade;
 
 CREATE TABLE members (
   id SERIAL PRIMARY KEY,
@@ -9,6 +9,15 @@ CREATE TABLE members (
   location VARCHAR(100),
   description TEXT,
   languages TEXT
+);
+
+CREATE TABLE github_users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  name VARCHAR(255),
+  avatar_url VARCHAR(255),
+  location VARCHAR(100),
+  access_token VARCHAR(255)
 );
 
 CREATE TABLE votes (
@@ -24,7 +33,7 @@ CREATE TABLE blog (
   date INTEGER
 );
 
-INSERT INTO blog (author_id, post) VALUES (1, 'Hapi World');
+-- INSERT INTO blog (author_id, post) VALUES (1, 'Hapi World');
 
 
 INSERT INTO members (name, position, location, description, languages)
