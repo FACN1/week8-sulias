@@ -28,7 +28,7 @@ CREATE TABLE votes (
 
 CREATE TABLE blog (
   id SERIAL PRIMARY KEY,
-  author_id INTEGER references members (id) NOT NULL,
+  github_author_id INTEGER references github_users (id) NOT NULL,
   post TEXT,
   date INTEGER
 );
