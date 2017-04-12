@@ -1,7 +1,7 @@
 # week7-ifitmake-suHapi
 An app which shows people involved in FACN1, where a user can see everyone involved, and add new people
 
-[SEE IT ON HEROKU HERE](#)
+[SEE IT ON HEROKU HERE](https://sulias.herokuapp.com/)
 
 ## Get Started
 ```bash
@@ -71,7 +71,7 @@ As a potential employer
 |       id       |  PRIMARY KEY SERIAL  |
 |    username    | VARCHAR(255) NOT NULL|
 |      name      | VARCHAR(255) NOT NULL|
-|   avatar_url   | VARCHAR(100) NOT NULL|
+|   avatar_url   | VARCHAR(255) NOT NULL|
 |    location    |     VARCHAR(100)     |
 |  access_token  |     VARCHAR(255)     |
 
