@@ -57,12 +57,12 @@ As a potential employer
 
 <!-- New table -->
 **Blog Posts**
-| ***Columns***  |           ***Parameters***          |
-| :------------- |           :-------------            |
-|       id       |    PRIMARY KEY SERIAL NOT NULL      |
-|    author_id   | references members(id) INT NOT NULL |
-|      post      |                 TEXT                |
-|      date      |                 INT                 |
+| ***Columns***  |              ***Parameters***            |
+| :------------- |              :-------------              |
+|       id       |       PRIMARY KEY SERIAL NOT NULL        |
+|github_author_id| references github_users(id) INT NOT NULL |
+|      post      |                    TEXT                  |
+|      date      |                    INT                   |
 
 **github_users**
 
@@ -78,10 +78,13 @@ As a potential employer
 
 ## Schedule / TODO
 ##### Project Day 1
-- Add a new database table to db_build.js
-- Add a login button to homepage
-- Add GitHub OAuth 2 for login
+- [x] Add a new database table to db_build.js
+- [x] Add a login button to homepage
+- [x] Add GitHub OAuth 2 for login
 
 ##### Project Day 2
-- Add login button to index
--
+- [x] Add login button to index
+- [ ] Add username and profile icon to every page
+  - Add to layout/default.hbs
+  -
+- [ ]
