@@ -13,13 +13,12 @@ server.connection({
 });
 
 function validate(token, request, callback) {
-  console.log(token.user);
-  query.getGithubUser(token.user.username, (err, res) => {
+  query.getGithubUser(token.user.id, (err, res) => {
     if (err) {
       console.log(err);
       return callback(null, false);
     }
-    if (res.rows[0].username === token.user.username) {
+    if (res.rows[0].id === token.user.id) {
       return callback(null, true);
     }
     return callback(null, false);

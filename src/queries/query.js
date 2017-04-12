@@ -17,11 +17,30 @@ const addMember = (member, cb) => {
 };
 
 const addGithubUser = (user, cb) => {
-  dbConnection.query('INSERT INTO github_users (username, name, avatar_url, location, access_token) VALUES ($1, $2, $3, $4, $5)', [user.username, user.name, user.avatar_url, user.location, user.access_token], cb);
+  dbConnection.query('INSERT INTO github_users (id, username, name, avatar_url, location, access_token) VALUES ($1, $2, $3, $4, $5, $6)', [user.id, user.username, user.name, user.avatar_url, user.location, user.access_token], cb);
 };
 
-const getGithubUser = (username, cb) => {
-  dbConnection.query('SELECT * FROM github_users WHERE username=$1', [username], cb);
+const getGithubUser = (id, cb) => {
+  dbConnection.query('SELECT * FROM github_users WHERE id=$1', [id], cb);
 };
 
-module.exports = { getAll, searchFor, addMember, addGithubUser, getGithubUser };
+const addBlogPost = (post, cb) => {
+  dbConnection.query('INSERT INTO blog (github_author_id, post, date) VALUES ($1, $2, $3)', [post.author_id, post.post_text, post.date], cb);
+};
+
+const getAllPosts = (cb) => {
+  dbConnection.query('SELECT blog.github_author_id, github_users.username, blog.post, blog.date FROM blog INNER JOIN github_users ON blog.github_author_id=github_users.id', cb);
+//   SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+// FROM Orders
+// INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+};
+
+module.exports = {
+  getAll,
+  searchFor,
+  addMember,
+  addGithubUser,
+  getGithubUser,
+  addBlogPost,
+  getAllPosts
+};

@@ -3,12 +3,17 @@ const Joi = require('joi');
 
 const handler = (request, reply) => {
   if (request.auth.isAuthenticated) {
-    return query.addMember(request.payload, (err) => {
+    const post = {
+      author_id: request.auth.credentials.user.id,
+      post_text: request.payload.post_text,
+      date: Math.round((new Date()).getTime() / 1000)
+    };
+    query.addBlogPost(post, (err) => {
       if (err) {
         console.log(err);
       }
-      reply.redirect('/');
     });
+    return reply.redirect('/blog/posts');
   }
   const data = {
     title: 'FACN Hapi Members',
@@ -19,16 +24,12 @@ const handler = (request, reply) => {
 
 const options = {
   method: 'POST',
-  path: '/add-member',
+  path: '/blog/add-post',
   handler,
   config: {
     validate: {
       payload: {
-        name: Joi.string().alphanum().required(),
-        position: Joi.string().required(),
-        location: Joi.string().required(),
-        description: Joi.string().required(),
-        languages: Joi.string().required()
+        post_text: Joi.string().max(10000).required()
       }
     },
     auth: {

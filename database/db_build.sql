@@ -12,7 +12,7 @@ CREATE TABLE members (
 );
 
 CREATE TABLE github_users (
-  id SERIAL PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
   name VARCHAR(255),
   avatar_url VARCHAR(255),
@@ -28,7 +28,7 @@ CREATE TABLE votes (
 
 CREATE TABLE blog (
   id SERIAL PRIMARY KEY,
-  author_id INTEGER references members (id) NOT NULL,
+  github_author_id INTEGER references github_users (id) NOT NULL,
   post TEXT,
   date INTEGER
 );
