@@ -74,23 +74,15 @@ module.exports = {
             accessToken: responseBody.access_token
           };
           jwt.sign(payload, process.env.SECRET, optionsGet, (err, token) => {
-            query.getAll((queryErr, res) => {
-              if (err) {
-                console.log(queryErr);
-                return rep('Internal server error').code(500);
-              }
-              const data = {
-                title: 'FACN Hapi Members',
-                description: 'An app which shows people involved in FACN1, where a user can see everyone involved, and add new people',
-                members: res.rows
-              };
-              return rep.view('members', data)
-                      .state('token', token, {
-                        path: '/',
-                        isHttpOnly: false,
-                        isSecure: process.env.NODE_ENV === 'PRODUCTION'
-                      });
-            });
+            if (err) {
+              return rep('Internal server error').code(500);
+            }
+            return rep.redirect('/')
+                    .state('token', token, {
+                      path: '/',
+                      isHttpOnly: false,
+                      isSecure: process.env.NODE_ENV === 'PRODUCTION'
+                    });
           });
         });
       } else {
