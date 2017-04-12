@@ -3,6 +3,7 @@ require('env2')('./config.env');
 const url = require('url');
 const qs = require('querystring');
 const jwt = require('jsonwebtoken');
+const query = require('../queries/query.js');
 
 module.exports = {
   method: 'GET',
@@ -41,7 +42,7 @@ module.exports = {
         },
         (errorGet, responseGet, bodyGet) => {
           if (errorGet) {
-            console.log(error);
+            console.log(errorGet);
             rep(500).error(500);
             return;
           }
@@ -50,6 +51,21 @@ module.exports = {
             expiresIn: Date.now() + (24 * 60 * 60 * 1000),
             subject: 'github-data'
           };
+
+          const userData = {
+            username: JSON.parse(bodyGet).login,
+            name: JSON.parse(bodyGet).name,
+            avatar_url: JSON.parse(bodyGet).avatar_url,
+            location: JSON.parse(bodyGet).location,
+            access_token: responseBody.access_token
+          };
+
+          query.addGithubUser(userData, (addUserErr) => {
+            if (addUserErr) {
+              console.log(addUserErr);
+            }
+          });
+
           const payload = {
             user: {
               username: JSON.parse(bodyGet).login,
@@ -58,12 +74,23 @@ module.exports = {
             accessToken: responseBody.access_token
           };
           jwt.sign(payload, process.env.SECRET, optionsGet, (err, token) => {
-            rep.redirect('/post')
-          .state('token', token, {
-            path: '/',
-            isHttpOnly: false,
-            isSecure: process.env.NODE_ENV === 'PRODUCTION'
-          });
+            query.getAll((queryErr, res) => {
+              if (err) {
+                console.log(queryErr);
+                return rep('Internal server error').code(500);
+              }
+              const data = {
+                title: 'FACN Hapi Members',
+                description: 'An app which shows people involved in FACN1, where a user can see everyone involved, and add new people',
+                members: res.rows
+              };
+              return rep.view('members', data)
+                      .state('token', token, {
+                        path: '/',
+                        isHttpOnly: false,
+                        isSecure: process.env.NODE_ENV === 'PRODUCTION'
+                      });
+            });
           });
         });
       } else {
