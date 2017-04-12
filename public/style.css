@@ -124,3 +124,30 @@ header p {
   margin: 12px 0px;
   box-sizing: border-box;
 }
+
+.user-info {
+	float: right;
+}
+
+.user-info:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.user-info img {
+	display:block;
+	float: right;
+	border-radius: 50%;
+	height: 64px;
+}
+
+.user-info:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.user-info strong {
+	display: block;
+}

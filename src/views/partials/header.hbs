@@ -1,8 +1,10 @@
 <header class="members-header container">
   {{#if username}}
-  <strong>{{username}}</strong>
-  <img src="{{avatar_url}}" alt="{{username}}'s profile picture">
-  {{/if}} 
+    <div class="user-info">
+      <strong>{{username}}</strong>
+      <img src="{{avatar_url}}" alt="{{username}}'s profile picture">
+    </div>
+  {{/if}}
   <h1>{{title}}</h1>
   <p>{{description}}</p>
 </header>
