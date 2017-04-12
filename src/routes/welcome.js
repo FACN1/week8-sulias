@@ -55,6 +55,7 @@ module.exports = {
           const userData = {
             username: JSON.parse(bodyGet).login,
             name: JSON.parse(bodyGet).name,
+            id: JSON.parse(bodyGet).id,
             avatar_url: JSON.parse(bodyGet).avatar_url,
             location: JSON.parse(bodyGet).location,
             access_token: responseBody.access_token
@@ -69,6 +70,7 @@ module.exports = {
           const payload = {
             user: {
               username: JSON.parse(bodyGet).login,
+              id: JSON.parse(bodyGet).id,
               img_url: JSON.parse(bodyGet).avatar_url
             },
             accessToken: responseBody.access_token
