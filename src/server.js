@@ -12,6 +12,12 @@ server.connection({
   port: process.env.PORT || 4000
 });
 
+server.connections = {
+  state: {
+    isSameSite: 'Lax'
+  }
+};
+
 function validate(token, request, callback) {
   query.getGithubUser(token.user.id, (err, res) => {
     if (err) {
