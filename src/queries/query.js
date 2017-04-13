@@ -30,9 +30,6 @@ const addBlogPost = (post, cb) => {
 
 const getAllPosts = (cb) => {
   dbConnection.query('SELECT blog.github_author_id, github_users.username, blog.post, blog.date FROM blog INNER JOIN github_users ON blog.github_author_id=github_users.id', cb);
-//   SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
-// FROM Orders
-// INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
 };
 
 module.exports = {
