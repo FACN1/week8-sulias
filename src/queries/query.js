@@ -17,7 +17,7 @@ const addMember = (member, cb) => {
 };
 
 const addGithubUser = (user, cb) => {
-  dbConnection.query('INSERT INTO github_users (id, username, name, avatar_url, location, access_token) VALUES ($1, $2, $3, $4, $5, $6)', [user.id, user.username, user.name, user.avatar_url, user.location, user.access_token], cb);
+  dbConnection.query('INSERT INTO github_users (id, username, name, avatar_url, location, access_token) VALUES ($1, $2, $3, $4, $5, $6) ON CONFLICT (id) DO UPDATE SET username=$2, name=$3, avatar_url=$4, location=$5, access_token=$6;', [user.id, user.username, user.name, user.avatar_url, user.location, user.access_token], cb);
 };
 
 const getGithubUser = (id, cb) => {
