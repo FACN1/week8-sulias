@@ -6,6 +6,7 @@ const loginHandler = require('./login.js');
 const welcomeHandler = require('./welcome.js');
 const postsHandler = require('./posts.js');
 const addPostHandler = require('./addPost.js');
+const logoutHandler = require('./logout.js');
 
 module.exports = [
   homeHandler,
@@ -15,5 +16,6 @@ module.exports = [
   loginHandler,
   welcomeHandler,
   postsHandler,
-  addPostHandler
+  addPostHandler,
+  logoutHandler
 ];
