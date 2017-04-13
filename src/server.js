@@ -6,11 +6,18 @@ const handlebars = require('handlebars');
 const jwt = require('hapi-auth-jwt2');
 const query = require('./queries/query.js');
 
-const server = new hapi.Server();
+const server = new hapi.Server({
+  connections: {
+    state: {
+      isSameSite: 'Lax'
+    }
+  }
+});
 
 server.connection({
   port: process.env.PORT || 4000
 });
+
 
 function validate(token, request, callback) {
   query.getGithubUser(token.user.id, (err, res) => {
