@@ -5,32 +5,46 @@ An app which shows people involved in FACN1, where a user can see everyone invol
 
 ## Get Started
 ```bash
-git clone https://github.com/FACN1/week7-ifitmake-suHapi.git &&
-cd week7-ifitmake-suHapi &&
+git clone https://github.com/FACN1/week8-sulias.git &&
+cd week8-sulias &&
 npm i &&
-touch config.env &&
-echo 'Add database URL to config.env'
+npm run init-project
 ```
 
-## User Stories
+## User stories
 
-As a visitor to the site
+**As a** member of Founders and Coders, who wants to learn from my fellow devs
+> **I want to** log in with my Github account  
+> **So that** I can use my Github organisation's info to see posts from my fellow students.
 
-> I want to see a list of all the people involved when I first visit the site
+Acceptance criteria:
 
-> I want to be able to search for specific or groups people involved easily (by name, location, member type etc) to get information about them
++ [x] I can click on a button, which allows me to log in via my Github account
++ [x] The look of the button should make it obvious that it is this form of login
++ [x] Once I'm logged in, I should see a list of blog posts
++ [x] I shouldn't be left with a blank loading screen for too long during the authorisation process, otherwise I will lose confidence in your website and leave.
 
-> I want to be able to add me/others to the list and see the list with me/them in it
+**As** any user who is logged in
+> **I want to** see my username & Github profile picture on the homepage  
+> **So that** I benefit from logging in with Github OAuth, and don't have to do any profile setup on your site.
 
-> I want to be able to vote for my favourite member and see the number of votes members have.
+Acceptance criteria:
 
-As a potential applicant
++ [x] I can see my username & profile picture on each page that I visit
 
-> I want to find a list of people to talk to about FAC Nazareth
+### Stretch goals
+**As** the author of my own posts (any authenticated user)
+> **I want to** be able to edit the posts that I have written (only my own)  
+> **So that** I can retain editorial control & make sure my online content is the best it can be.
 
-As a potential employer
+Acceptance criteria:
 
-> I want to find the 'best' candidate from FAC Nazareth to maybe hire
++ [ ] I can click on a button next to any of my posts, which takes me to an edit view
++ [ ] I can't see an edit button next to anyone else's posts
++ [ ] Each user has the same experience (but with their own posts)
++ [ ] Clicking "done" / "submit" changes the content for every user to see
++ [ ] Clicking "done" / "submit" takes me to a view of the new, edited version of my blog post
+
 
 ## Schema
 **MEMBERS**
