@@ -6,7 +6,8 @@ module.exports = {
   path: '/login',
   handler: (request, reply) => {
     const params = {
-      client_id: process.env.CLIENT_ID
+      client_id: process.env.CLIENT_ID,
+      redirect_uri: 'https://sulias.herokuapp.com/welcome'
     };
     reply.redirect(`https://github.com/login/oauth/authorize?${qs.stringify(params)}`);
   }
