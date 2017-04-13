@@ -57,8 +57,9 @@ As a potential employer
 
 <!-- New table -->
 **Blog Posts**
+
 | ***Columns***  |              ***Parameters***            |
-| :------------- |              :-------------              |
+| :------------- | :--------------------------------------- |
 |       id       |       PRIMARY KEY SERIAL NOT NULL        |
 |github_author_id| references github_users(id) INT NOT NULL |
 |      post      |                    TEXT                  |
@@ -84,7 +85,5 @@ As a potential employer
 
 ##### Project Day 2
 - [x] Add login button to index
-- [ ] Add username and profile icon to every page
+- [x] Add username and profile icon to every page
   - Add to layout/default.hbs
-  -
-- [ ]
